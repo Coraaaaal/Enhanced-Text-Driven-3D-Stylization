@@ -38,6 +38,8 @@ pip install -r requirements.txt
 ./demo/run_colorful_lamp.sh
 ...
 ```
+>The outputs will be saved to results/demo, with the stylized .obj files, colored and uncolored render views, and screenshots during training.
+>
 ## Result
 <p align="center">
   <img src="images/1result.png" height="700">
