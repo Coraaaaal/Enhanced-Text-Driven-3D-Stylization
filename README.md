@@ -49,7 +49,7 @@ pip install -r requirements.txt
 ## 📚 Citation
 If you find this work useful, please cite our related manuscript:
 ```bibtex
-@article{LHE3D_2025,
+@article{ETD3D_2025,
   title     = {Enhanced Text-Driven 3D Stylization: Local Consistency and Hierarchical Encoding},
   author    = {Jiayi Bu, Huihuang Zhao, Yichun Wu, Jiajia Hu},
   year      = {2025},
