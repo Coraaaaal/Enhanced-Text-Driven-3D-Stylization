@@ -6,7 +6,7 @@
 > Please cite this paper if you use this code in your research.
 ##  Overview  
 
-This is a framework for **text-driven 3D mesh stylization**, which enhances **local consistency**, **stylization fidelity**, and **semantic alignment** in text-guided 3D content generation.
+This is a framework for **text-driven 3D mesh stylization**, which enhances **structure robustness**, **stylization fidelity**, and **semantic alignment** in text-guided 3D content generation.
 
 <p align="center">
   <img src="assets/framework.png" width="700">
