@@ -1,4 +1,4 @@
-# Enhanced-Text-Driven-3D-Stylization
+# ETD3D
 >A pytorch implementation of "Enhanced Text-Driven 3D Stylization: Local Consistency and Hierarchical Encoding"
 >
 >
