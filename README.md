@@ -50,9 +50,9 @@ pip install -r requirements.txt
 If you find this work useful, please cite our related manuscript:
 ```bibtex
 @article{LHE3D_2025,
-  title     = {LHE3D: Text-Driven 3D Stylization with Local Consistency Optimization and Hierarchical Encoding},
-  author    = {Your Name and Coauthor Name and Another Coauthor},
+  title     = {Enhanced Text-Driven 3D Stylization: Local Consistency and Hierarchical Encoding},
+  author    = {Jiayi Bu, Huihuang Zhao, Yichun Wu, Jiajia Hu},
   year      = {2025},
   note      = {Manuscript submitted to The Visual Computer (under review)},
-  url       = {https://github.com/yourusername/LHE3D},
+  url       = {[https://github.com/yourusername/LHE3D](https://github.com/Coraaaaal/Enhanced-Text-Driven-3D-Stylization)},
 }
