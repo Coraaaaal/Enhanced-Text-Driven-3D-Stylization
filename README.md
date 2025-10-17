@@ -9,7 +9,7 @@
 This is a framework for **text-driven 3D mesh stylization**, which enhances **structure robustness**, **stylization fidelity**, and **semantic alignment** in text-guided 3D content generation.
 
 <p align="center">
-  <img src="images/overview.png" width="700">
+  <img src="images/framework.png" width="700">
 </p>
 
 
