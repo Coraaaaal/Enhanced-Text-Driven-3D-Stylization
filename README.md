@@ -53,6 +53,6 @@ If you find this work useful, please cite our related manuscript:
   title     = {Enhanced Text-Driven 3D Stylization: Local Consistency and Hierarchical Encoding},
   author    = {Jiayi Bu, Huihuang Zhao, Yichun Wu, Jiajia Hu},
   year      = {2025},
-  note      = {Manuscript submitted to The Visual Computer (under review)},
+  note      = {Manuscript submitted to The Visual Computer },
   url       = {[https://github.com/yourusername/LHE3D](https://github.com/Coraaaaal/Enhanced-Text-Driven-3D-Stylization)},
 }
