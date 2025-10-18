@@ -54,5 +54,5 @@ If you find this work useful, please cite our related manuscript:
   author    = {Jiayi Bu, Huihuang Zhao, Yichun Wu, Jiajia Hu},
   year      = {2025},
   note      = {Manuscript submitted to The Visual Computer },
-  url       = {[https://github.com/yourusername/LHE3D](https://github.com/Coraaaaal/Enhanced-Text-Driven-3D-Stylization)},
+  url       = {https://github.com/Coraaaaal/Enhanced-Text-Driven-3D-Stylization},
 }
