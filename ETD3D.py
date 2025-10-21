@@ -84,7 +84,23 @@ class SpatialGate(nn.Module):
         res=x*scale # broadcasting (P,D)
         return res
 
+class LocalEnhance(nn.Module):
+    def __init__(self, gate_channels, k):
+        super(LocalEnhance, self).__init__()
+        self.k = k        
+	self.conv = nn.Linear(gate_channels, gate_channels) 
+        self.bn = nn.BatchNorm1d(gate_channels)
+        self.relu = nn.ReLU(inplace=True)
 
+    def forward(self, x):
+        N, C = x.size()
+        neighbors = x[idx]  
+        x_neighbors = neighbors.mean(dim=1)  
+        x_enhanced = x + x_neighbors
+        x_enhanced = self.conv(x_enhanced)  
+        x_enhanced = self.bn(x_enhanced) 
+        x_enhanced = self.relu(x_enhanced)  
+        return x_enhanced
 
 class QueryDynamicAttention(nn.Module):
     def __init__(self,gate_channels=256,mu_dim=512, reduction_ratio=8, pool_types=['avg', 'max'],use_spatial=True,use_channel=True):
@@ -101,6 +117,19 @@ class QueryDynamicAttention(nn.Module):
 	 self.local_enhance = LocalEnhance(channels, k)
         return x
 
+class HierarchicalPositionalEncoding(nn.Module):
+     def __init__(self, max_freq=10, num_levels):
+         super(HierarchicalPositionalEncoding, self).__init__()
+         self.num_levels = num_levels
+         self.max_freq = max_freq
+    
+     def forward(self,):
+         encoding = [x]
+         for level in range(self.num_levels):
+             scale = 2 ** level
+             encoding.append(torch.sin(scale * x) + torch.cos(scale * x))
+         return torch.cat(encoding, dim=-1)
+
 class ProgressiveEncoding(nn.Module):
     def __init__(self, mapping_size, T, d=3, apply=True):
         super(ProgressiveEncoding, self).__init__()
@@ -111,12 +140,14 @@ class ProgressiveEncoding(nn.Module):
         self._tau = 2 * self.n / self.T
         self.indices = torch.tensor([i for i in range(self.n)], device=device)
         self.apply = apply
+	self.positional_encoding = HierarchicalPositionalEncoding()
     def forward(self, x):
         alpha = ((self._t - self._tau * self.indices) / self._tau).clamp(0, 1).repeat(
             2)  # no need to reduce d or to check cases
         if not self.apply:
             alpha = torch.ones_like(alpha, device=device)  ## this layer means pure ffn without progress.
         alpha = torch.cat([torch.ones(self.d, device=device), alpha], dim=0)
+		x = self.positional_encoding(x)
         self._t += 1
         return x * alpha
 
@@ -215,5 +246,4 @@ def save_model(model, loss, iter, optim, output_dir):
     path = os.path.join(output_dir, 'checkpoint.pth.tar')
 
     torch.save(save_dict, path)
-
 
