@@ -88,7 +88,6 @@ class LocalEnhance(nn.Module):
     def __init__(self, gate_channels, k):
         super(LocalEnhance, self).__init__()
         self.k = k        
-	self.conv = nn.Linear(gate_channels, gate_channels) 
         self.bn = nn.BatchNorm1d(gate_channels)
         self.relu = nn.ReLU(inplace=True)
 
@@ -97,7 +96,6 @@ class LocalEnhance(nn.Module):
         neighbors = x[idx]  
         x_neighbors = neighbors.mean(dim=1)  
         x_enhanced = x + x_neighbors
-        x_enhanced = self.conv(x_enhanced)  
         x_enhanced = self.bn(x_enhanced) 
         x_enhanced = self.relu(x_enhanced)  
         return x_enhanced
@@ -118,7 +116,7 @@ class QueryDynamicAttention(nn.Module):
         return x
 
 class HierarchicalPositionalEncoding(nn.Module):
-     def __init__(self, max_freq=10, num_levels):
+     def __init__(self, max_freq, num_levels):
          super(HierarchicalPositionalEncoding, self).__init__()
          self.num_levels = num_levels
          self.max_freq = max_freq
